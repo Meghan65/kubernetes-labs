@@ -1,0 +1,14 @@
+#Pod Template
+apiVersion: v1                                     # Pod api version
+kind: Pod                                          # Pod api kind name
+metadata:
+  name: webapp-declarative-pod                     # Pod name
+spec:
+  containers:
+   - name: nginx                                   # Container name
+     image: nginx:latest                           # Image name
+     ports:
+       - containerPort: 80                         # Container port
+
+
+
