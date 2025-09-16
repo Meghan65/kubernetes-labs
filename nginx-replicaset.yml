@@ -1,0 +1,28 @@
+apiVersion: apps/v1                                #Replicaset api version
+kind: ReplicaSet                                   #Replicaset api kind name
+metadata:
+  name: nginx-replicaset                           #Replicaset name
+spec:
+  replicas: 2                                      #2 pod replicas wil create
+  selector:                                        #to bind replicas and pod
+    matchLabels:
+      app: webapp                                  #Labels should be match to identify which pod created from which replicaset
+  template:
+    metadata:
+    #name: webapp-declarative-pod                  #Pod name
+      labels:
+        app: webapp                                #Labels should be match to identify which pod created from which replicaset
+    spec:
+      containers:                                  
+       - name: nginx                               #Container name
+         image: nginx:latest                       #Image name
+         ports:
+           - containerPort: 80                     #Container port
+
+
+
+#Here pods are controlled/created by replicaset, one pod is failed then other pod will create
+#If we upgrade/update the image then it will reflect only in replicaset not in pods
+#because Replicaset API is not meant for application deployment, to reflect in pod we need a
+#Deployment API
+ 
