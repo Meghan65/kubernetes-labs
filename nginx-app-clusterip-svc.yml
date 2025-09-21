@@ -1,0 +1,13 @@
+appVersion: v1
+kind: Service
+metadata:
+  name: nginx-clusterip-svc
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+   - name: http
+     port: 8080   # clusterip service port
+     targetport: 80  # container/pod port
